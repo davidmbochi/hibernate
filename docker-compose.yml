@@ -1,0 +1,36 @@
+version: '3.1'
+
+services:
+  mysql:
+    container_name: hibernate-jpa-db
+    image: mysql
+    ports:
+      - "3306:3306"
+    restart: on-failure
+    volumes:
+      - MYSQL_DATA:/var/lib/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: javawhizz
+      MYSQL_DATABASE: javawhizz
+      MYSQL_USER: javawhizz
+      MYSQL_PASSWORD: javawhizz
+
+#  mysql-workbench:
+#    image: lscr.io/linuxserver/mysql-workbench:latest
+#    container_name: mysql-workbench
+#    cap_add:
+#      - IPC_LOCK
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - TZ=Etc/UTC
+#    volumes:
+#      - MYSQL_WORKBENCH_DATA:/var/lib/config:/config
+#    ports:
+#      - 3000:3000
+#      - 3001:3001
+#    restart: unless-stopped
+
+volumes:
+  MYSQL_DATA:
+  MYSQL_WORKBENCH_DATA:
